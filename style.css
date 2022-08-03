@@ -1,0 +1,57 @@
+html {
+  font-size: 20px;
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  line-height: 2rem;
+}
+
+a,
+a:visited {
+  color: rgb(74, 74, 214);
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+ul.carousel {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+ul.carousel li {
+  padding: 0.5rem;
+  display: inline-block;
+  width: 30%;
+}
+
+ul.carousel li:first-child {
+  margin-left: 0;
+}
+
+ul.carousel img {
+  max-width: 100%;
+}
+
+img.single {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+}
+
+img {
+  border: 1px solid grey;
+  padding: 2px;
+}
+
+article {
+  border-bottom: 1px solid grey;
+  padding-bottom: 1.5rem;
+  padding-top: 1.5rem;
+}

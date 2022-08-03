@@ -1,0 +1,50 @@
+<!doctype html>
+<head>
+  <title>Instagram archive of {{account.full_name}}</title>
+  <style>
+    {{style}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="account">
+      <img src="images/{{ account.profile_pic_url | localUrl}}" alt=""/>
+      <h1>{{account.full_name}}
+        {% if account.is_verified %}
+          <span class="verified">(Verified)</span>{% endif %}
+      </h1>
+      <p>{{account.biography}}</p>
+      <h2>Posts</h2>
+    </div>
+    <div class="posts">
+      {% for post in photos %}
+        <article role="article">
+          <h2 id="{{post.code}}">
+            <a href="#{{post.code}}">{{post.taken_at | timestamp }}</a>
+          </h2>
+          {% if post.carousel_media %}
+            <ul class="carousel">
+              {% for image in post.carousel_media %}
+                <li>
+                  <a href="images/{{ image.image_versions2.candidates[0].url | localUrl }}">
+                    <img src="images/{{ image.image_versions2.candidates[0].url | localUrl }}" alt=""/></a>
+                </li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <a href="images/{{ post.image_versions2.candidates[0].url | localUrl }}">
+              <img class="single" src="images/{{ post.image_versions2.candidates[0].url | localUrl }}" alt=""/>
+            </a>
+          {% endif %}
+          <div class="post">
+            {{ post.caption.text }}
+            <div>
+              <a href="https://www.instagram.com/p/{{ post.code }}" class="instagram-link" target="_blank" rel="noreferrer">View in Instagram</a>
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+
+    </div>
+  </body>
+</html>
